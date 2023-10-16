@@ -30,10 +30,9 @@ public class TaskController {
   public ResponseEntity create(@RequestBody TaskModel taskModel, HttpServletRequest request) {
     System.out.println("Chegou no controller " + request.getAttribute("idUser"));
 
-    //var idUser = request.getAttribute("idUser");
     taskModel.setIdUser((UUID) request.getAttribute("idUser"));
 
-   var  currentDate = LocalDateTime.now();
+    var  currentDate = LocalDateTime.now();
     if (currentDate.isAfter(taskModel.getStartAt()) && currentDate.isAfter(taskModel.getEndAt())) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A data de início e a data de término devem ser maior do que a data atual");
 
@@ -50,8 +49,8 @@ public class TaskController {
 
     }
 
-
     var task = this.taskRepository.save(taskModel);
+
     return ResponseEntity.status(HttpStatus.OK).body(task);
   }
 
@@ -63,8 +62,6 @@ public class TaskController {
 
   @PutMapping("/{id}")
   public ResponseEntity update(@RequestBody TaskModel taskModel, @PathVariable UUID id, HttpServletRequest request){
-    //var idUser = request.getAttribute("idUser");
-
     var task = this.taskRepository.findById(id).orElse(null);
 
     if(task == null){
@@ -79,10 +76,6 @@ public class TaskController {
 
     Utils.copyNonNullProperties(taskModel, task);
     var taskUpdated = this.taskRepository.save(task);
-
-    // taskModel.setIdUser((UUID) idUser);
-    // taskModel.setId(id);
-    //return this.taskRepository.save(taskModel);
 
     return ResponseEntity.ok().body(taskUpdated);
   }

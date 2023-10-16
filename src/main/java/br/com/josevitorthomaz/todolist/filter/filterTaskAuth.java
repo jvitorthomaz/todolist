@@ -67,7 +67,5 @@ public class filterTaskAuth extends OncePerRequestFilter{
     } else {
       filterChain.doFilter(request, response);
     }
-
   }
-
 }

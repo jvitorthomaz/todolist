@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "653527d3-5f0b-4686-adbb-7f6e8a33e132",
+		"name": "Java todolist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27162111"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/users/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"José Vitor Thomaz\",\n    \"username\": \"jvthomaz\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/users/"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/tasks/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "jvthomaz",
+						"password": "12345678"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\":\"Tarefa de teste para aula 4 do curso de java\",\n    \"title\": \"Tarefa de Teste\",\n    \"priority\": \"ALTA\",\n    \"startAt\": \"2023-10-21T12:30:00\",\n    \"endAt\": \"2023-10-28T12:30:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/tasks/"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "jvthomaz",
+						"password": "12345678"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/tasks/"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/tasks/2f1878e7-557d-48a5-82a7-2c4a297d618a",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "jvthomaz",
+						"password": "12345678"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Mudando o titulo...\",\n    \"priority\": \"MEDIA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/tasks/2f1878e7-557d-48a5-82a7-2c4a297d618a"
+			},
+			"response": []
+		}
+	]
+}
